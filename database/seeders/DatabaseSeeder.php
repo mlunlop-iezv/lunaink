@@ -2,24 +2,34 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Artist;
+use App\Models\Style;
+use App\Models\Tattoo;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $styles = Style::all();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        if ($styles->isEmpty()) {
+            $this->call(StyleSeeder::class); 
+            $styles = Style::all(); 
+        }
+
+        Artist::factory(5)->create()->each(function ($artist) use ($styles) {
+
+            if ($styles->count() > 0) {
+                $artist->styles()->attach(
+                    $styles->random(rand(1, 3))->pluck('id')->toArray()
+                );
+
+                Tattoo::factory(8)->create([
+                    'artist_id' => $artist->id,
+                    'style_id' => $styles->random()->id, 
+                ]);
+            }
+        });
     }
 }
