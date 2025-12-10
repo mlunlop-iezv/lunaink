@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
             $table->string('name'); //Nombre del tatuador
-            $table->text('bio');    //Biografía (text porque puede ser largo)
+            $table->text('bio');    //Biografia
             $table->timestamps();   //created_at y updated_at 
         });
     }

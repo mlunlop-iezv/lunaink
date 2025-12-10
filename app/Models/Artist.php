@@ -17,7 +17,7 @@ class Artist extends Model
         return $this->hasMany(Tattoo::class);
     }
     
-    // Un Artista "PERTECE A MUCHOS" Estilos preferidos
+    // Un Artista PERTECE A MUCHOS Estilos preferidos
     public function styles()
     {
         return $this->belongsToMany(Style::class);

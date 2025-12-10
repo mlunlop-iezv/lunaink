@@ -22,5 +22,5 @@ Route::resource('tattoos', App\Http\Controllers\TattooController::class);
 // 3, RUTAS DE ARTIST
 Route::resource('artists', App\Http\Controllers\ArtistController::class);
 
-// 4. RUTAS DE ESTILOS (Solo lectura por ahora)
+// 4. RUTAS DE ESTILOS 
 Route::resource('styles', App\Http\Controllers\StyleController::class);

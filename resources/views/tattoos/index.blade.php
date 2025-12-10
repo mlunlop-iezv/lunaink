@@ -32,9 +32,6 @@
                     <div class="col">
                         <div class="card shadow-sm" style="min-height: 400px; border: 1px solid #222; background: #0a0a0a;">
 
-                            {{-- IMAGEN SVG --}}
-                            {{-- Nota: background-image se queda aquí porque es DINÁMICO. El resto se fue al CSS (.tattoo-bg-image)
-                            --}}
                             <svg class="bd-placeholder-img card-img-top tattoo-bg-image" width="100%" height="225"
                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: {{ $tattoo->title }}"
                                 preserveAspectRatio="xMidYMid slice" focusable="false"
@@ -49,10 +46,8 @@
                                 </text>
                             </svg>
 
-                            {{-- CUERPO DE LA TARJETA (Con la nueva clase para el padding) --}}
                             <div class="tattoo-card-body">
                                 <div class="card-text">
-                                    {{-- Usamos las clases helper creadas en el CSS para ordenar esto --}}
                                     <div style="margin-bottom: 15px;">
                                         <span class="label-small">Style</span>
                                         <span class="label-value">{{ $tattoo->style->name }}</span>
@@ -64,7 +59,6 @@
                                     </div>
                                 </div>
 
-                                {{-- BOTONES --}}
                                 <div class="card-actions">
                                     <a href="{{ route('tattoos.show', $tattoo) }}" class="btn-custom btn-view">VIEW</a>
                                     <a href="{{ route('tattoos.edit', $tattoo) }}" class="btn-custom btn-edit">EDIT</a>

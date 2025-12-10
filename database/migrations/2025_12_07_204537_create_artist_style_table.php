@@ -19,7 +19,7 @@ return new class extends Migration {
             // ID del Estilo
             $table->foreignId('style_id')->constrained()->onDelete('cascade');
 
-            // Evitar duplicados (que no puedas asignar "Realismo" dos veces al mismo tío)
+            // Evitar duplicados de estilos
             $table->unique(['artist_id', 'style_id']);
         });
     }

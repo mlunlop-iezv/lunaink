@@ -12,7 +12,6 @@
             <h2 class="form-title">EDIT TATTOO</h2>
             <p class="form-subtitle">Update the details of this masterpiece</p>
 
-            {{-- CAMBIO: Mensaje de error general --}}
             @if($errors->has('general'))
                 <div style="background: #ff4d4d; color: white; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
                     {{ $errors->first('general') }}
@@ -25,7 +24,6 @@
 
                 <div class="form-group">
                     <label for="title">Tattoo Title</label>
-                    {{-- CAMBIO: old('title', $tattoo->title) --}}
                     <input type="text" name="title" id="title" class="form-input" value="{{ old('title', $tattoo->title) }}"
                         required>
 
@@ -58,7 +56,6 @@
                     <select name="artist_id" id="artist_id" class="form-input form-select" required>
                         <option value="" disabled>SELECT AN ARTIST</option>
                         @foreach($artists as $artist)
-                            {{-- CAMBIO: Lógica doble para old o DB --}}
                             <option value="{{ $artist->id }}" {{ old('artist_id', $tattoo->artist_id) == $artist->id ? 'selected' : '' }}>
                                 {{ $artist->name }}
                             </option>
@@ -72,7 +69,6 @@
 
                 <div class="form-group">
                     <label for="duration">Duration</label>
-                    {{-- CAMBIO: old('duration', $tattoo->duration) --}}
                     <input type="text" name="duration" id="duration" class="form-input"
                         value="{{ old('duration', $tattoo->duration) }}" placeholder="E.g. 4 hours / 2 sessions">
 
@@ -86,7 +82,6 @@
                     <select name="style_id" id="style_id" class="form-input form-select" required>
                         <option value="" disabled>SELECT A STYLE</option>
                         @foreach($styles as $style)
-                            {{-- CAMBIO: Lógica doble --}}
                             <option value="{{ $style->id }}" {{ old('style_id', $tattoo->style_id) == $style->id ? 'selected' : '' }}>
                                 {{ $style->name }}
                             </option>

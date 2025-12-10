@@ -16,7 +16,7 @@
             <div class="artist-bio-container">
                 <p class="artist-bio">
                     {{ $artist->bio }}
-            </div>
+                </div>
 
             <div class="artist-tags">
                 @foreach($artist->styles as $style)
@@ -65,19 +65,15 @@
             <div class="portfolio-grid">
 
                 @forelse($artist->tattoos as $tattoo)
-                    {{-- Enlace al detalle del tattoo --}}
                     <a href="{{ route('tattoos.show', $tattoo) }}" class="portfolio-item">
 
                         <div class="image-wrapper">
-                            {{-- Lógica de imagen --}}
                             <img src="{{ Str::startsWith($tattoo->image_url, 'http') ? $tattoo->image_url : asset($tattoo->image_url) }}"
                                 alt="{{ $tattoo->title }}" class="portfolio-img">
 
-                            {{-- Etiqueta flotante --}}
                             <span class="floating-tag">{{ strtoupper($tattoo->style->name) }}</span>
                         </div>
 
-                        {{-- Información debajo de la foto --}}
                         <div class="tattoo-info">
                             <h3 class="tattoo-title">{{ $tattoo->title }}</h3>
                             <span class="tattoo-date">{{ $tattoo->created_at->format('M Y') }}</span>
@@ -85,7 +81,6 @@
                     </a>
 
                 @empty
-                    {{-- Mensaje si no hay tatuajes --}}
                     <div class="portfolio-empty">
                         <p class="empty-text">No masterpieces uploaded yet.</p>
                     </div>
